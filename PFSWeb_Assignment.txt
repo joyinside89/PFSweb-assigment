@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p> Rendering Json Data in UI & LI</p>
+<p  class="container"></p>
+
+<script>
+var createSublist = function(container, args) {
+  var ul = document.createElement('ul');
+
+  for(var j = 0; j < args.length; j++) {
+    var row = args[j];   
+
+    var li = document.createElement('li');
+    li.innerText = row.name;  
+
+    var nodes = row.nodes;
+    if(nodes && nodes.length) {
+      createSublist(li, nodes);
+    }
+    ul.appendChild(li);
+  }
+  container.appendChild(ul);
+};
+var data =[  
+     {  
+      "name":"Test1"
+   },
+    {  
+      "name":"Test2"
+},
+
+];
+var container = document.getElementsByClassName('container')[0]; 
+if(container)
+{
+  createSublist(container, data);
+}
+else
+{
+  console.log('Container has not been found');
+}
+</script>
+</body>
+</html>
